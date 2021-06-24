@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use Macrame\Ui\Page;
-use Illuminate\Http\Request;
 
 class DevController extends Controller
 {
     public function buttons(Page $page)
     {
         $page->component('buttons');
+
+        return $page;
+    }
+
+    public function card(Page $page)
+    {
+        $page->component('card');
 
         return $page;
     }

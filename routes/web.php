@@ -16,6 +16,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('ui/buttons', [DevController::class, 'buttons']);
+Route::get('ui/card', [DevController::class, 'card']);
 Route::get('ui/badges', [DevController::class, 'badges']);
 Route::get('ui/dropdown', [DevController::class, 'dropdown']);
 
