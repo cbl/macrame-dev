@@ -43,9 +43,13 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
+            foreach (['vue3', 'react'] as $app) {
+                Route::middleware('web')
+                    ->namespace($this->namespace)
+                    ->prefix($app)
+                    ->as($app.'.')
+                    ->group(base_path('routes/web.php'));
+            }
         });
     }
 
