@@ -1882,11 +1882,15 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.Button = exports.pages = exports.plugin = void 0;
+exports.Card = exports.Button = exports.pages = exports.plugin = void 0;
 
 var Button_1 = __webpack_require__(/*! ./ui/Button */ "./packages/admin/packages/admin-react/src/ui/Button.tsx");
 
 exports.Button = Button_1["default"];
+
+var Card_1 = __webpack_require__(/*! ./ui/Card */ "./packages/admin/packages/admin-react/src/ui/Card.tsx");
+
+exports.Card = Card_1["default"];
 
 var Checkbox_1 = __webpack_require__(/*! ./ui/Checkbox */ "./packages/admin/packages/admin-react/src/ui/Checkbox.tsx");
 
@@ -1915,6 +1919,7 @@ var BasePage_1 = __webpack_require__(/*! ./pages/BasePage */ "./packages/admin/p
 var plugin = {
   install: function install(addComponent) {
     addComponent('ui-checkbox', Checkbox_1["default"]);
+    addComponent('ui-card', Card_1["default"]);
     addComponent('ui-form', Form_1["default"]);
     addComponent('ui-form-checkboxes', FormCheckboxes_1["default"]);
     addComponent('ui-form-input', FormInput_1["default"]);
@@ -2090,6 +2095,64 @@ var Button = function Button(_ref, context) {
 };
 
 exports.default = Button;
+
+/***/ }),
+
+/***/ "./packages/admin/packages/admin-react/src/ui/Card.tsx":
+/*!*************************************************************!*\
+  !*** ./packages/admin/packages/admin-react/src/ui/Card.tsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _excluded = ["as"];
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var classnames_1 = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var variant_1 = __webpack_require__(/*! ./props/variant */ "./packages/admin/packages/admin-react/src/ui/props/variant.ts");
+
+var size_1 = __webpack_require__(/*! ./props/size */ "./packages/admin/packages/admin-react/src/ui/props/size.ts");
+
+var Card = function Card(_ref, context) {
+  var _ref$as = _ref.as,
+      as = _ref$as === void 0 ? 'div' : _ref$as,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  var Tag = as;
+  var variant = variant_1["default"](props, {
+    DEFAULT: 'white'
+  });
+  var size = size_1["default"](props, {
+    only: ['sm', 'md']
+  });
+  return jsx_runtime_1.jsx(Tag, Object.assign({
+    className: classnames_1["default"](_defineProperty({
+      'rounded-sm p-6': true,
+      'bg-white shadow': variant == 'white',
+      'bg-gray-300': variant == 'gray',
+      'p-12': size == 'md',
+      'p-8': size == 'sm'
+    }, props.className, true))
+  }, {
+    children: props.children
+  }), void 0);
+};
+
+exports.default = Card;
 
 /***/ }),
 
@@ -2419,8 +2482,13 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-function getSize(props) {
-  var _react_1$useState = react_1.useState('md'),
+function getSize(props, options) {
+  var _options$DEFAULT = options.DEFAULT,
+      DEFAULT = _options$DEFAULT === void 0 ? 'md' : _options$DEFAULT,
+      _options$only = options.only,
+      only = _options$only === void 0 ? ['sm', 'md', 'lg'] : _options$only;
+
+  var _react_1$useState = react_1.useState(DEFAULT),
       _react_1$useState2 = _slicedToArray(_react_1$useState, 2),
       size = _react_1$useState2[0],
       setSize = _react_1$useState2[1];
@@ -2428,11 +2496,11 @@ function getSize(props) {
   react_1.useEffect(function () {
     if (props.variant) {
       setSize(props.size);
-    } else if (props.sm) {
+    } else if (props.sm && only.includes('sm')) {
       setSize('sm');
-    } else if (props.md) {
+    } else if (props.md && only.includes('md')) {
       setSize('md');
-    } else if (props.lg) {
+    } else if (props.lg && only.includes('lg')) {
       setSize('lg');
     } else {
       setSize('md');
@@ -2472,7 +2540,10 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-function getVariant(props) {
+function getVariant(props, options) {
+  var _options$DEFAULT = options.DEFAULT,
+      DEFAULT = _options$DEFAULT === void 0 ? 'blue' : _options$DEFAULT;
+
   var _react_1$useState = react_1.useState('blue'),
       _react_1$useState2 = _slicedToArray(_react_1$useState, 2),
       variant = _react_1$useState2[0],
@@ -2492,7 +2563,7 @@ function getVariant(props) {
     } else if (props.red) {
       setVariant('red');
     } else {
-      setVariant('blue');
+      setVariant(DEFAULT);
     }
   }, [props]);
   return variant;
@@ -3412,10 +3483,13 @@ Object.defineProperty(exports, "__esModule", ({
 
 var Buttons_1 = __webpack_require__(/*! ./components/Buttons */ "./resources/js/react/components/Buttons.tsx");
 
+var Card_1 = __webpack_require__(/*! ./components/Card */ "./resources/js/react/components/Card.tsx");
+
 exports.default = {
   install: function install(useComponent) {
     // app.component('Badges', Badges);
     useComponent('buttons', Buttons_1["default"]);
+    useComponent('card', Card_1["default"]);
   }
 };
 
@@ -3676,6 +3750,64 @@ function default_1() {
         }), void 0)
       }), void 0)]
     }, void 0)
+  }), void 0);
+}
+
+exports.default = default_1;
+
+/***/ }),
+
+/***/ "./resources/js/react/components/Card.tsx":
+/*!************************************************!*\
+  !*** ./resources/js/react/components/Card.tsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var admin_react_1 = __webpack_require__(/*! @macramejs/admin-react */ "./packages/admin/packages/admin-react/src/index.tsx");
+
+function default_1() {
+  return jsx_runtime_1.jsxs("div", Object.assign({
+    className: "p-24 w-full h-full fixed bg-gray-700 flex flex-wrap gap-5"
+  }, {
+    children: [jsx_runtime_1.jsx(admin_react_1.Card, Object.assign({
+      className: "w-full"
+    }, {
+      children: "Hello"
+    }), void 0), jsx_runtime_1.jsx(admin_react_1.Card, Object.assign({
+      gray: true,
+      className: "w-2/3"
+    }, {
+      children: "Hello"
+    }), void 0), jsx_runtime_1.jsx(admin_react_1.Card, Object.assign({
+      gray: true,
+      sm: true,
+      className: "w-1/3"
+    }, {
+      children: "Hello"
+    }), void 0), jsx_runtime_1.jsx(admin_react_1.Card, Object.assign({
+      gray: true,
+      sm: true,
+      className: "w-1/3 p-4"
+    }, {
+      children: "Hello"
+    }), void 0), jsx_runtime_1.jsx(admin_react_1.Card, Object.assign({
+      as: "div"
+    }, {
+      children: "Hello"
+    }), void 0), jsx_runtime_1.jsx(admin_react_1.Card, Object.assign({
+      className: "bg-blue text-white"
+    }, {
+      children: "Hello"
+    }), void 0)]
   }), void 0);
 }
 
