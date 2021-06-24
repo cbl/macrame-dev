@@ -4,7 +4,7 @@
         "clone": "npm run clone-admin && npm run clone-macrame && npm run clone-macrame-laravel",
         "clone-admin": "git clone https://github.com/macramejs/admin packages/admin",
         "clone-macrame": "git clone https://github.com/macramejs/macrame packages/macrame",
-        "clone-macrame-laravel": "git clone https://github.com/macramejs/macrame-laravel && packages/macrame-laravel",
+        "clone-macrame-laravel": "git clone https://github.com/macramejs/macrame-laravel packages/macrame-laravel",
         "watch-vue3": "mix watch --mix-config vue3.webpack.mix.js",
         "watch-react": "mix watch --mix-config react.webpack.mix.js",
         "watch-poll-vue3": "mix watch -- --watch-options-poll=1000 --mix-config vue3.webpack.mix.js",
