@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DevController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +19,7 @@ Route::get('ui/buttons', [DevController::class, 'buttons']);
 Route::get('ui/card', [DevController::class, 'card']);
 Route::get('ui/badges', [DevController::class, 'badges']);
 Route::get('ui/dropdown', [DevController::class, 'dropdown']);
+Route::get('ui/sidebar', [DevController::class, 'sidebar']);
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/items', [PostController::class, 'items'])->name('posts.items');

@@ -1,12 +1,11 @@
 <?php
+
 namespace App\Ui\Tables;
 
-use Macrame\Ui\Table\Table;
-use Macrame\Ui\Table\Schema;
-use Macrame\Form\Fields\Input;
-use Macrame\Form\Fields\Checkboxes;
-use Macrame\Ui\Table\FilterCollection;
 use Illuminate\Database\Eloquent\Builder;
+use Macrame\Table\Filter\Schema as FilterSchema;
+use Macrame\Table\Schema;
+use Macrame\Table\Table;
 
 class PostTable extends Table
 {
@@ -23,28 +22,24 @@ class PostTable extends Table
         $table->col()->label('Text')->value('text');
     }
 
-    // /**
-    //  * Add filters.
-    //  *
-    //  * @param FilterCollection $filters
-    //  * @return void
-    //  */
-    // public function filters($filters)
-    // {
-    //     $filters->add('lorem', [
-    //         new Checkboxes('foo', [
-    //             'orange' => 'Orange',
-    //             'apple' => 'Apple',
-    //         ])
-    //         // new Input('foo')
-    //     ]);
-    // }
+    /**
+     * Add filters.
+     *
+     * @param  FilterSchema $filters
+     * @return void
+     */
+    public function filters($filters)
+    {
+        $filters->add('lorem', function ($builder, $attributes) {
+            //
+        });
+    }
 
     /**
      * Handle search.
      *
-     * @param Builder $query
-     * @param string $search
+     * @param  Builder $query
+     * @param  string  $search
      * @return void
      */
     public function search(Builder $query, $search)

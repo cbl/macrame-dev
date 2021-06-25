@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Inertia\Inertia;
-use Macrame\Ui\Page;
 use App\Ui\Forms\PostForm;
 use App\Ui\Tables\PostTable;
 use Illuminate\Http\Request;
+use Macrame\Ui\Page;
 
 class PostController extends Controller
 {
@@ -25,7 +24,7 @@ class PostController extends Controller
             (new PostTable)->syncUrl(),
             route('posts.items')
         );
-        
+
         return $page;
     }
 
@@ -35,7 +34,7 @@ class PostController extends Controller
             new PostForm($post),
             route('posts.update', $post)
         );
-        
+
         return $page;
     }
 

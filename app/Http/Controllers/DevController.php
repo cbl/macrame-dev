@@ -8,29 +8,26 @@ class DevController extends Controller
 {
     public function buttons(Page $page)
     {
-        $page->component('buttons');
-
-        return $page;
+        return $page->component('buttons');
     }
 
     public function card(Page $page)
     {
-        $page->component('card');
-
-        return $page;
+        return $page->component('card');
     }
 
     public function badges(Page $page)
     {
-        $page->component('badges');
-
-        return $page;
+        return $page->component('badges');
     }
 
     public function dropdown(Page $page)
     {
-        $page->component('dropdown');
+        return $page->component('dropdown');
+    }
 
-        return $page;
+    public function sidebar(Page $page)
+    {
+        return $page->component('sidebar');
     }
 }

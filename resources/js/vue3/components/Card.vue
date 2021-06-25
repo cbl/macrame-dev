@@ -1,5 +1,17 @@
 <template>
-    <div class="p-24 w-full h-full fixed bg-gray-700 flex flex-wrap gap-5">
+    <div
+        class="
+            p-24
+            w-full
+            h-full
+            fixed
+            flex flex-wrap
+            gap-5
+            bg-gradient-to-r
+            from-green-500
+            to-blue-600
+        "
+    >
         <ui-card class="w-full">Hello</ui-card>
         <ui-card gray class="w-2/3">Hello</ui-card>
         <ui-card gray sm class="w-1/3">Hello</ui-card>
