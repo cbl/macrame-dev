@@ -21,6 +21,11 @@ class DevController extends Controller
         return $page->component('badges');
     }
 
+    public function toggle(Page $page)
+    {
+        return $page->component('toggle');
+    }
+
     public function dropdown(Page $page)
     {
         return $page->component('dropdown');

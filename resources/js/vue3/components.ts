@@ -3,6 +3,7 @@ import Card from './components/Card.vue';
 import Buttons from './components/Buttons.vue';
 import Dropdown from './components/Dropdown.vue';
 import Sidebar from './components/Sidebar.vue';
+import Toggle from './components/Toggle.vue';
 
 export default {
     install(app) {
@@ -12,5 +13,6 @@ export default {
         app.component('Buttons', Buttons);
         app.component('Dropdown', Dropdown);
         app.component('Sidebar', Sidebar);
+        app.component('Toggle', Toggle);
     }
 }

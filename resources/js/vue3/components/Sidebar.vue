@@ -4,7 +4,7 @@
             Toggle Sidebar
         </ui-button>
         <ui-sidebar :open="isOpen" @close="setIsOpen">
-            <div class="mt-2">
+            <div class="mt-2 px-4">
                 <p class="text-sm text-gray-500">
                     Your payment has been successfully submitted. We’ve sent
                     your an email with all of the details of your order.

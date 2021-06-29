@@ -20,6 +20,7 @@ Route::get('ui/card', [DevController::class, 'card']);
 Route::get('ui/badges', [DevController::class, 'badges']);
 Route::get('ui/dropdown', [DevController::class, 'dropdown']);
 Route::get('ui/sidebar', [DevController::class, 'sidebar']);
+Route::get('ui/toggle', [DevController::class, 'toggle']);
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/items', [PostController::class, 'items'])->name('posts.items');
