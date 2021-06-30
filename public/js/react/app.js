@@ -7627,7 +7627,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.Toggle = exports.Card = exports.Button = exports.pages = exports.plugin = void 0;
+exports.Toggle = exports.RadioGroup = exports.Card = exports.Button = exports.pages = exports.plugin = void 0;
 
 var Button_1 = __webpack_require__(/*! ./ui/Button */ "./packages/admin/packages/admin-react/src/ui/Button.tsx");
 
@@ -7655,6 +7655,10 @@ var IndexSearch_1 = __webpack_require__(/*! ./ui/IndexSearch */ "./packages/admi
 
 var Input_1 = __webpack_require__(/*! ./ui/Input */ "./packages/admin/packages/admin-react/src/ui/Input.tsx");
 
+var RadioGroup_1 = __webpack_require__(/*! ./ui/RadioGroup */ "./packages/admin/packages/admin-react/src/ui/RadioGroup.tsx");
+
+exports.RadioGroup = RadioGroup_1["default"];
+
 var Select_1 = __webpack_require__(/*! ./ui/Select */ "./packages/admin/packages/admin-react/src/ui/Select.tsx");
 
 var Toggle_1 = __webpack_require__(/*! ./ui/Toggle */ "./packages/admin/packages/admin-react/src/ui/Toggle.tsx");
@@ -7677,6 +7681,7 @@ var plugin = {
     addComponent('ui-index', Index_1["default"]);
     addComponent('ui-index-search', IndexSearch_1["default"]);
     addComponent('ui-input', Input_1["default"]);
+    addComponent('ui-radio-group', RadioGroup_1["default"]);
     addComponent('ui-select', Select_1["default"]);
     addComponent('ui-textarea', Textarea_1["default"]);
     addComponent('ui-toggle', Toggle_1["default"]);
@@ -8154,6 +8159,122 @@ var Input = function Input(props) {
 };
 
 exports.default = Input;
+
+/***/ }),
+
+/***/ "./packages/admin/packages/admin-react/src/ui/RadioGroup.tsx":
+/*!*******************************************************************!*\
+  !*** ./packages/admin/packages/admin-react/src/ui/RadioGroup.tsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _excluded = ["labelKey", "valueKey", "disabledKey", "options", "value", "onChange"];
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var classnames_1 = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var react_1 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.esm.js");
+
+var RadioGroup = function RadioGroup(_ref, context) {
+  var _ref$labelKey = _ref.labelKey,
+      labelKey = _ref$labelKey === void 0 ? null : _ref$labelKey,
+      _ref$valueKey = _ref.valueKey,
+      valueKey = _ref$valueKey === void 0 ? null : _ref$valueKey,
+      _ref$disabledKey = _ref.disabledKey,
+      disabledKey = _ref$disabledKey === void 0 ? null : _ref$disabledKey,
+      _ref$options = _ref.options,
+      options = _ref$options === void 0 ? [] : _ref$options,
+      _ref$value = _ref.value,
+      value = _ref$value === void 0 ? null : _ref$value,
+      _ref$onChange = _ref.onChange,
+      onChange = _ref$onChange === void 0 ? function (v) {
+    return null;
+  } : _ref$onChange,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  var optionValue = function optionValue(option) {
+    if (valueKey === null) {
+      return option;
+    }
+
+    return option[valueKey];
+  };
+
+  var optionLabel = function optionLabel(option) {
+    if (labelKey === null) {
+      return option;
+    }
+
+    return option[labelKey];
+  };
+
+  var isDisabled = function isDisabled(option) {
+    if (disabledKey === null) {
+      return false;
+    }
+
+    return option[disabledKey] == true;
+  };
+
+  return jsx_runtime_1.jsx(react_1.RadioGroup, Object.assign({
+    value: value,
+    onChange: onChange
+  }, {
+    children: options.map(function (option, index) {
+      return jsx_runtime_1.jsx(react_1.RadioGroup.Option, Object.assign({
+        value: optionValue(option),
+        disabled: isDisabled(option)
+      }, {
+        children: function children(_ref2) {
+          var checked = _ref2.checked,
+              disabled = _ref2.disabled;
+          return jsx_runtime_1.jsxs("div", Object.assign({
+            className: "flex"
+          }, {
+            children: [jsx_runtime_1.jsx("div", Object.assign({
+              className: "flex items-center w-6 h-6"
+            }, {
+              children: jsx_runtime_1.jsx("div", Object.assign({
+                className: classnames_1["default"]({
+                  'flex items-center justify-center w-3.5 h-3.5 border rounded-lg': true,
+                  'bg-blue': checked && !disabled,
+                  'bg-gray-700': checked && disabled,
+                  'border-gray-700': !disabled,
+                  'border-gray-600': disabled
+                })
+              }, {
+                children: jsx_runtime_1.jsx("div", {
+                  className: "w-1 h-1 bg-white rounded-lg"
+                }, void 0)
+              }), void 0)
+            }), void 0), jsx_runtime_1.jsx(react_1.RadioGroup.Label, Object.assign({
+              as: "p",
+              className: classnames_1["default"]('flex-1 cursor-pointer', {
+                'text-gray-600': disabled
+              })
+            }, {
+              children: optionLabel(option)
+            }), void 0)]
+          }), void 0);
+        }
+      }), index);
+    })
+  }), void 0);
+};
+
+exports.default = RadioGroup;
 
 /***/ }),
 
@@ -9333,9 +9454,10 @@ Object.defineProperty(exports, "__esModule", ({
 
 var Buttons_1 = __webpack_require__(/*! ./components/Buttons */ "./resources/js/react/components/Buttons.tsx");
 
-var Card_1 = __webpack_require__(/*! ./components/Card */ "./resources/js/react/components/Card.tsx");
+var Card_1 = __webpack_require__(/*! ./components/Card */ "./resources/js/react/components/Card.tsx"); // import Checkbox from './components/Checkbox';
 
-var Checkbox_1 = __webpack_require__(/*! ./components/Checkbox */ "./resources/js/react/components/Checkbox.tsx");
+
+var RadioGroup_1 = __webpack_require__(/*! ./components/RadioGroup */ "./resources/js/react/components/RadioGroup.tsx");
 
 var Toggle_1 = __webpack_require__(/*! ./components/Toggle */ "./resources/js/react/components/Toggle.tsx");
 
@@ -9344,8 +9466,8 @@ exports.default = {
     // app.component('Badges', Badges);
     useComponent('buttons', Buttons_1["default"]);
     useComponent('card', Card_1["default"]);
-    useComponent('toggle', Toggle_1["default"]);
-    useComponent('checkbox', Checkbox_1["default"]);
+    useComponent('radio-group', RadioGroup_1["default"]);
+    useComponent('toggle', Toggle_1["default"]); // useComponent('checkbox', Checkbox);
   }
 };
 
@@ -9671,10 +9793,10 @@ exports.default = default_1;
 
 /***/ }),
 
-/***/ "./resources/js/react/components/Checkbox.tsx":
-/*!****************************************************!*\
-  !*** ./resources/js/react/components/Checkbox.tsx ***!
-  \****************************************************/
+/***/ "./resources/js/react/components/RadioGroup.tsx":
+/*!******************************************************!*\
+  !*** ./resources/js/react/components/RadioGroup.tsx ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -9703,60 +9825,43 @@ var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var admin_react_1 = __webpack_require__(/*! @macramejs/admin-react */ "./packages/admin/packages/admin-react/src/index.tsx");
 
 function default_1() {
-  var _react_1$useState = react_1.useState(false),
+  var _react_1$useState = react_1.useState(''),
       _react_1$useState2 = _slicedToArray(_react_1$useState, 2),
-      checked = _react_1$useState2[0],
-      setChecked = _react_1$useState2[1];
+      simple = _react_1$useState2[0],
+      setSimple = _react_1$useState2[1];
+
+  var _react_1$useState3 = react_1.useState(''),
+      _react_1$useState4 = _slicedToArray(_react_1$useState3, 2),
+      selection = _react_1$useState4[0],
+      setSelection = _react_1$useState4[1];
 
   return jsx_runtime_1.jsxs("div", Object.assign({
-    className: "p-24 w-full h-full fixed bg-gray-100 gap-5"
+    className: "p-24"
   }, {
-    children: [jsx_runtime_1.jsxs("div", Object.assign({
-      className: "flex mb-5 space-x-5"
-    }, {
-      children: [jsx_runtime_1.jsx(admin_react_1.Checkbox, Object.assign({
-        checked: checked,
-        onChange: setChecked,
-        yellow: true,
-        sm: true
+    children: [jsx_runtime_1.jsx(admin_react_1.RadioGroup, {
+      value: simple,
+      onChange: setSimple,
+      options: ['foo', 'bar', 'baz']
+    }, void 0), " ", simple, jsx_runtime_1.jsx(admin_react_1.RadioGroup, {
+      value: selection,
+      onChange: setSelection,
+      options: [{
+        id: 1,
+        text: 'Foo'
       }, {
-        children: " Foo "
-      }), void 0), jsx_runtime_1.jsx(admin_react_1.Checkbox, Object.assign({
-        checked: checked,
-        onChange: setChecked,
-        green: true,
-        md: true
+        id: 2,
+        text: 'Bar'
       }, {
-        children: " Bar "
-      }), void 0), jsx_runtime_1.jsx(admin_react_1.Checkbox, Object.assign({
-        checked: checked,
-        onChange: setChecked,
-        blue: true,
-        lg: true
+        id: 3,
+        text: 'Baz'
       }, {
-        children: " Baz "
-      }), void 0)]
-    }), void 0), jsx_runtime_1.jsxs("div", Object.assign({
-      className: "flex mb-5 space-x-5"
-    }, {
-      children: [jsx_runtime_1.jsx(admin_react_1.Checkbox, {
-        checked: checked,
-        onChange: setChecked,
-        variant: "red",
-        size: "sm",
-        label: "Foo"
-      }, void 0), jsx_runtime_1.jsx(admin_react_1.Checkbox, {
-        checked: checked,
-        onChange: setChecked,
-        size: "md",
-        label: "Bar"
-      }, void 0), jsx_runtime_1.jsx(admin_react_1.Checkbox, {
-        checked: checked,
-        onChange: setChecked,
-        size: "lg",
-        label: "Baz"
-      }, void 0)]
-    }), void 0)]
+        id: 4,
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet enim dolore minima, facere dicta optio sunt ex suscipit nam impedit consectetur placeat aliquam reiciendis sequi dolor rem at neque. Culpa!'
+      }],
+      labelKey: "text",
+      valueKey: "id",
+      disabledKey: "disabled"
+    }, void 0), " ", selection]
   }), void 0);
 }
 

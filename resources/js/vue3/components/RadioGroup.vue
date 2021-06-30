@@ -1,12 +1,9 @@
 <template>
     <div class="p-24">
-        <ui-form-radio-group
-            v-model="simple"
-            :options="['foo', 'bar', 'baz']"
-        />
+        <ui-radio-group v-model="simple" :options="['foo', 'bar', 'baz']" />
 
         {{ simple }}
-        <ui-form-radio-group
+        <ui-radio-group
             v-model="selection"
             :options="options"
             label-key="text"
