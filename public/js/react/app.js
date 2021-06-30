@@ -1882,7 +1882,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.Card = exports.Button = exports.pages = exports.plugin = void 0;
+exports.Toggle = exports.Card = exports.Button = exports.pages = exports.plugin = void 0;
 
 var Button_1 = __webpack_require__(/*! ./ui/Button */ "./packages/admin/packages/admin-react/src/ui/Button.tsx");
 
@@ -1912,6 +1912,10 @@ var Input_1 = __webpack_require__(/*! ./ui/Input */ "./packages/admin/packages/a
 
 var Select_1 = __webpack_require__(/*! ./ui/Select */ "./packages/admin/packages/admin-react/src/ui/Select.tsx");
 
+var Toggle_1 = __webpack_require__(/*! ./ui/Toggle */ "./packages/admin/packages/admin-react/src/ui/Toggle.tsx");
+
+exports.Toggle = Toggle_1["default"];
+
 var Textarea_1 = __webpack_require__(/*! ./ui/Textarea */ "./packages/admin/packages/admin-react/src/ui/Textarea.tsx");
 
 var BasePage_1 = __webpack_require__(/*! ./pages/BasePage */ "./packages/admin/packages/admin-react/src/pages/BasePage.tsx");
@@ -1930,6 +1934,7 @@ var plugin = {
     addComponent('ui-input', Input_1["default"]);
     addComponent('ui-select', Select_1["default"]);
     addComponent('ui-textarea', Textarea_1["default"]);
+    addComponent('ui-toggle', Toggle_1["default"]);
   }
 };
 exports.plugin = plugin;
@@ -2452,6 +2457,91 @@ var Textarea = function Textarea(props) {
 };
 
 exports.default = Textarea;
+
+/***/ }),
+
+/***/ "./packages/admin/packages/admin-react/src/ui/Toggle.tsx":
+/*!***************************************************************!*\
+  !*** ./packages/admin/packages/admin-react/src/ui/Toggle.tsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _excluded = ["text", "square", "outline", "disabled"];
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var classnames_1 = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var variant_1 = __webpack_require__(/*! ./props/variant */ "./packages/admin/packages/admin-react/src/ui/props/variant.ts");
+
+var size_1 = __webpack_require__(/*! ./props/size */ "./packages/admin/packages/admin-react/src/ui/props/size.ts");
+
+var Button = function Button(_ref, context) {
+  var _ref$text = _ref.text,
+      text = _ref$text === void 0 ? false : _ref$text,
+      _ref$square = _ref.square,
+      square = _ref$square === void 0 ? false : _ref$square,
+      _ref$outline = _ref.outline,
+      outline = _ref$outline === void 0 ? false : _ref$outline,
+      _ref$disabled = _ref.disabled,
+      disabled = _ref$disabled === void 0 ? false : _ref$disabled,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  var Tag = 'href' in props ? 'a' : 'button';
+  var variant = variant_1["default"](props);
+  var size = size_1["default"](props);
+  return jsx_runtime_1.jsx(Tag, Object.assign({
+    className: classnames_1["default"](_defineProperty({
+      'inline-flex items-center justify-center focus:outline-none': true,
+      'focus:ring': !text && !disabled,
+      'text-lg': size == 'lg',
+      'text-base': size == 'md',
+      'text-xs': size == 'sm',
+      'w-12': square && size == 'lg',
+      'w-10': square && size == 'md',
+      'w-7': square && size == 'sm',
+      'h-12 rounded-lg': size == 'lg' && !text,
+      'h-10 rounded-md': size == 'md' && !text,
+      'h-7 rounded-sm': size == 'sm' && !text,
+      'px-6': size == 'lg' && !square && !text,
+      'px-5': size == 'md' && !square && !text,
+      'px-4': size == 'sm' && !square && !text,
+      'bg-gray-300 text-gray-600 cursor-default': disabled && !outline && !text,
+      'bg-blue hover:bg-blue-700 active:bg-blue-800 text-white focus:ring-blue-400 shadow': variant == 'blue' && !outline && !text && !disabled,
+      'bg-white hover:bg-blue-100 active:bg-blue-300 text-blue hover:text-blue-600 active:text-blue-700 border border-blue focus:ring-blue-400': variant == 'blue' && outline && !text && !disabled,
+      'text-blue hover:text-blue-700 active:text-blue-900 border-b border-blue': variant == 'blue' && text && !disabled,
+      'bg-gray-700 hover:bg-gray-800 active:bg-gray-900 focus:ring-gray-400 text-white': variant == 'gray' && !outline && !text && !disabled,
+      'bg-white hover:bg-gray-300 active:bg-gray-500 border border-gray-700 text-gray-700 focus:ring-gray-400': variant == 'gray' && outline && !text && !disabled,
+      'text-gray hover:text-gray-700 active:text-gray-900 border-b border-gray': variant == 'gray' && text && !disabled,
+      'bg-green hover:bg-green-700 active:bg-green-800 focus:ring-green-400 text-white': variant == 'green' && !outline && !text && !disabled,
+      'bg-white hover:bg-green-100 active:bg-green-300 text-green hover:text-green-600 active:text-green-700 border border-green focus:ring-green-400': variant == 'green' && outline && !text && !disabled,
+      'text-green hover:text-green-700 active:text-green-900 border-b border-green': variant == 'green' && text && !disabled,
+      'bg-red hover:bg-red-500 active:bg-red-600 focus:ring-red-400 text-white': variant == 'red' && !outline && !text && !disabled,
+      'bg-white hover:bg-red-100 active:bg-red-300 text-red hover:text-red-600 active:text-red-700 border border-red focus:ring-red-400': variant == 'red' && outline && !text && !disabled,
+      'text-red hover:text-red-700 active:text-red-900 border-b border-red': variant == 'red' && text && !disabled,
+      'bg-yellow hover:bg-yellow-700 active:bg-yellow-800 focus:ring-yellow-400 text-white': variant == 'yellow' && !outline && !text && !disabled,
+      'bg-white hover:bg-yellow-100 active:bg-yellow-300 text-yellow hover:text-yellow-600 active:text-yellow-700 border border-yellow focus:ring-yellow-400': variant == 'yellow' && outline && !text && !disabled,
+      'text-yellow hover:text-yellow-700 active:text-yellow-900 border-b border-yellow': variant == 'yellow' && text && !disabled
+    }, props.className, true))
+  }, {
+    children: props.children
+  }), void 0);
+};
+
+exports.default = Button;
 
 /***/ }),
 
@@ -3485,11 +3575,14 @@ var Buttons_1 = __webpack_require__(/*! ./components/Buttons */ "./resources/js/
 
 var Card_1 = __webpack_require__(/*! ./components/Card */ "./resources/js/react/components/Card.tsx");
 
+var Toggle_1 = __webpack_require__(/*! ./components/Toggle */ "./resources/js/react/components/Toggle.tsx");
+
 exports.default = {
   install: function install(useComponent) {
     // app.component('Badges', Badges);
     useComponent('buttons', Buttons_1["default"]);
     useComponent('card', Card_1["default"]);
+    useComponent('toggle', Toggle_1["default"]);
   }
 };
 
@@ -3808,6 +3901,268 @@ function default_1() {
     }, {
       children: "Hello"
     }), void 0)]
+  }), void 0);
+}
+
+exports.default = default_1;
+
+/***/ }),
+
+/***/ "./resources/js/react/components/Toggle.tsx":
+/*!**************************************************!*\
+  !*** ./resources/js/react/components/Toggle.tsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var admin_react_1 = __webpack_require__(/*! @macramejs/admin-react */ "./packages/admin/packages/admin-react/src/index.tsx");
+
+function default_1() {
+  return jsx_runtime_1.jsx("div", Object.assign({
+    className: "p-24"
+  }, {
+    children: jsx_runtime_1.jsxs("div", {
+      children: [jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        className: "m-2",
+        href: "#"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        disabled: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "gray",
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "gray",
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "gray",
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "green",
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "green",
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "green",
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "red",
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "red",
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "red",
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "yellow",
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "yellow",
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "yellow",
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        variant: "gray",
+        outline: true,
+        square: true,
+        className: "m-2"
+      }, {
+        children: jsx_runtime_1.jsxs("svg", Object.assign({
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 24 24",
+          width: "24",
+          height: "24",
+          className: "w-6 h-6 fill-current"
+        }, {
+          children: [jsx_runtime_1.jsx("path", {
+            fill: "none",
+            d: "M0 0h24v24H0z"
+          }, void 0), jsx_runtime_1.jsx("path", {
+            d: "M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"
+          }, void 0)]
+        }), void 0)
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        className: "m-2",
+        href: "#"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        disabled: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "gray",
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "gray",
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "gray",
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "green",
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "green",
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "green",
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "red",
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "red",
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "red",
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "yellow",
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "yellow",
+        outline: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "yellow",
+        text: true,
+        className: "m-2"
+      }, {
+        children: "Foo"
+      }), void 0), jsx_runtime_1.jsx("br", {}, void 0), jsx_runtime_1.jsx(admin_react_1.Button, Object.assign({
+        size: "sm",
+        variant: "gray",
+        outline: true,
+        square: true,
+        className: "m-2"
+      }, {
+        children: jsx_runtime_1.jsxs("svg", Object.assign({
+          xmlns: "http://www.w3.org/2000/svg",
+          viewBox: "0 0 24 24",
+          className: "w-3 h-3 fill-current"
+        }, {
+          children: [jsx_runtime_1.jsx("path", {
+            fill: "none",
+            d: "M0 0h24v24H0z"
+          }, void 0), jsx_runtime_1.jsx("path", {
+            d: "M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"
+          }, void 0)]
+        }), void 0)
+      }), void 0)]
+    }, void 0)
   }), void 0);
 }
 
