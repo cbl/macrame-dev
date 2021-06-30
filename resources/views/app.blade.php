@@ -7,7 +7,7 @@
     <link href="{{ asset("/css/{$app}/app.css") }}" rel="stylesheet">
     <script src="{{ asset("/js/{$app}/app.js") }}" defer></script>
   </head>
-  <body>
+  <body class="text-base bg-gray-100">
     @inertia
   </body>
 </html>

@@ -10,6 +10,7 @@ export const options = [
     {
         id: 3,
         text: 'Baz',
+        disabled: true,
     },
     {
         id: 4,
