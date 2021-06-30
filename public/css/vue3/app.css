@@ -686,19 +686,18 @@ video {
 .w-8 {
 	width: 2rem;
 }
+.w-5 {
+	width: 1.25rem;
+}
 .w-4 {
 	width: 1rem;
-}
-.translate-x-\[1px\] {
-	--tw-translate-x: 1px;
-	transform: var(--tw-transform);
 }
 .translate-x-px {
 	--tw-translate-x: 1px;
 	transform: var(--tw-transform);
 }
-.translate-x-8 {
-	--tw-translate-x: 2rem;
+.translate-x-\[33px\] {
+	--tw-translate-x: 33px;
 	transform: var(--tw-transform);
 }
 .translate-x-\[21px\] {
@@ -709,20 +708,20 @@ video {
 	--tw-translate-x: 17px;
 	transform: var(--tw-transform);
 }
+.translate-x-0 {
+	--tw-translate-x: 0px;
+	transform: var(--tw-transform);
+}
 .translate-x-\[32px\] {
 	--tw-translate-x: 32px;
 	transform: var(--tw-transform);
 }
-.translate-x-\[33px\] {
-	--tw-translate-x: 33px;
+.translate-x-\[20px\] {
+	--tw-translate-x: 20px;
 	transform: var(--tw-transform);
 }
-.translate-x-5 {
-	--tw-translate-x: 1.25rem;
-	transform: var(--tw-transform);
-}
-.translate-x-4 {
-	--tw-translate-x: 1rem;
+.translate-x-\[16px\] {
+	--tw-translate-x: 16px;
 	transform: var(--tw-transform);
 }
 .transform {
@@ -769,6 +768,9 @@ video {
 .border {
 	border-width: 1px;
 }
+.border-2 {
+	border-width: 2px;
+}
 .border-b {
 	border-bottom-width: 1px;
 }
@@ -796,13 +798,13 @@ video {
 	--tw-border-opacity: 1;
 	border-color: rgba(255, 220, 101, var(--tw-border-opacity));
 }
-.border-blue-500 {
-	--tw-border-opacity: 1;
-	border-color: rgba(73, 81, 242, var(--tw-border-opacity));
-}
 .border-gray-500 {
 	--tw-border-opacity: 1;
 	border-color: rgba(207, 217, 226, var(--tw-border-opacity));
+}
+.border-blue-500 {
+	--tw-border-opacity: 1;
+	border-color: rgba(73, 81, 242, var(--tw-border-opacity));
 }
 .border-green-500 {
 	--tw-border-opacity: 1;
@@ -815,10 +817,6 @@ video {
 .border-yellow-500 {
 	--tw-border-opacity: 1;
 	border-color: rgba(255, 203, 24, var(--tw-border-opacity));
-}
-.border-white {
-	--tw-border-opacity: 1;
-	border-color: rgba(255, 255, 255, var(--tw-border-opacity));
 }
 .bg-blue {
 	--tw-bg-opacity: 1;
@@ -848,13 +846,13 @@ video {
 	--tw-bg-opacity: 1;
 	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
-.bg-blue-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(73, 81, 242, var(--tw-bg-opacity));
-}
 .bg-gray-500 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(207, 217, 226, var(--tw-bg-opacity));
+}
+.bg-blue-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(73, 81, 242, var(--tw-bg-opacity));
 }
 .bg-green-500 {
 	--tw-bg-opacity: 1;
