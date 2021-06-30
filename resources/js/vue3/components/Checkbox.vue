@@ -17,7 +17,7 @@
             <ui-checkbox v-model="check" gray> Foo </ui-checkbox>
         </div>
         <div>
-            <ui-checkbox lg v-model="check" label="Foo" />
+            <ui-checkbox size="lg" v-model="check" label="Foo" />
             <ui-checkbox lg v-model="check" blue> Foo </ui-checkbox>
             <ui-checkbox lg v-model="check" green> Foo </ui-checkbox>
             <ui-checkbox lg v-model="check" red> Foo </ui-checkbox>

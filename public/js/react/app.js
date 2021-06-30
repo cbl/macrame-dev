@@ -9335,6 +9335,8 @@ var Buttons_1 = __webpack_require__(/*! ./components/Buttons */ "./resources/js/
 
 var Card_1 = __webpack_require__(/*! ./components/Card */ "./resources/js/react/components/Card.tsx");
 
+var Checkbox_1 = __webpack_require__(/*! ./components/Checkbox */ "./resources/js/react/components/Checkbox.tsx");
+
 var Toggle_1 = __webpack_require__(/*! ./components/Toggle */ "./resources/js/react/components/Toggle.tsx");
 
 exports.default = {
@@ -9343,6 +9345,7 @@ exports.default = {
     useComponent('buttons', Buttons_1["default"]);
     useComponent('card', Card_1["default"]);
     useComponent('toggle', Toggle_1["default"]);
+    useComponent('checkbox', Checkbox_1["default"]);
   }
 };
 
@@ -9660,6 +9663,99 @@ function default_1() {
       className: "bg-blue text-white"
     }, {
       children: "Hello"
+    }), void 0)]
+  }), void 0);
+}
+
+exports.default = default_1;
+
+/***/ }),
+
+/***/ "./resources/js/react/components/Checkbox.tsx":
+/*!****************************************************!*\
+  !*** ./resources/js/react/components/Checkbox.tsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var admin_react_1 = __webpack_require__(/*! @macramejs/admin-react */ "./packages/admin/packages/admin-react/src/index.tsx");
+
+function default_1() {
+  var _react_1$useState = react_1.useState(false),
+      _react_1$useState2 = _slicedToArray(_react_1$useState, 2),
+      checked = _react_1$useState2[0],
+      setChecked = _react_1$useState2[1];
+
+  return jsx_runtime_1.jsxs("div", Object.assign({
+    className: "p-24 w-full h-full fixed bg-gray-100 gap-5"
+  }, {
+    children: [jsx_runtime_1.jsxs("div", Object.assign({
+      className: "flex mb-5 space-x-5"
+    }, {
+      children: [jsx_runtime_1.jsx(admin_react_1.Checkbox, Object.assign({
+        checked: checked,
+        onChange: setChecked,
+        yellow: true,
+        sm: true
+      }, {
+        children: " Foo "
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Checkbox, Object.assign({
+        checked: checked,
+        onChange: setChecked,
+        green: true,
+        md: true
+      }, {
+        children: " Bar "
+      }), void 0), jsx_runtime_1.jsx(admin_react_1.Checkbox, Object.assign({
+        checked: checked,
+        onChange: setChecked,
+        blue: true,
+        lg: true
+      }, {
+        children: " Baz "
+      }), void 0)]
+    }), void 0), jsx_runtime_1.jsxs("div", Object.assign({
+      className: "flex mb-5 space-x-5"
+    }, {
+      children: [jsx_runtime_1.jsx(admin_react_1.Checkbox, {
+        checked: checked,
+        onChange: setChecked,
+        variant: "red",
+        size: "sm",
+        label: "Foo"
+      }, void 0), jsx_runtime_1.jsx(admin_react_1.Checkbox, {
+        checked: checked,
+        onChange: setChecked,
+        size: "md",
+        label: "Bar"
+      }, void 0), jsx_runtime_1.jsx(admin_react_1.Checkbox, {
+        checked: checked,
+        onChange: setChecked,
+        size: "lg",
+        label: "Baz"
+      }, void 0)]
     }), void 0)]
   }), void 0);
 }
