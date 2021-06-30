@@ -23589,11 +23589,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @headlessui/vue */ "./node_modules/@headlessui/vue/dist/headlessui.esm.js");
 /* harmony import */ var _props_size__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./props/size */ "./packages/admin/packages/admin-vue3/src/ui/props/size.js");
+/* harmony import */ var _props_variant__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./props/variant */ "./packages/admin/packages/admin-vue3/src/ui/props/variant.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -23604,7 +23606,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     SwitchGroup: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.SwitchGroup,
     SwitchLabel: _headlessui_vue__WEBPACK_IMPORTED_MODULE_1__.SwitchLabel
   },
-  props: _objectSpread({
+  props: _objectSpread(_objectSpread({
     label: {
       type: String,
       "default": null
@@ -23613,13 +23615,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       type: Boolean,
       "default": false
     }
-  }, _props_size__WEBPACK_IMPORTED_MODULE_2__.sizes),
+  }, _props_size__WEBPACK_IMPORTED_MODULE_2__.sizes), _props_variant__WEBPACK_IMPORTED_MODULE_3__.variants),
   setup: function setup(props) {
     var enabled = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var size_ = (0,_props_size__WEBPACK_IMPORTED_MODULE_2__.getSize)(props, {});
+    var variant_ = (0,_props_variant__WEBPACK_IMPORTED_MODULE_3__.getVariant)(props, {});
     return {
       enabled: enabled,
-      size_: size_
+      size_: size_,
+      variant_: variant_
     };
   }
 });
@@ -24327,30 +24331,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return $setup.enabled = $event;
         }),
         "class": [{
-          'switch-bg-enabled': $setup.enabled,
-          'switch-bg-disabled': !$setup.enabled,
+          'bg-gray-500 border-gray-500': !$setup.enabled,
+          'bg-blue-500 border-blue-500': $setup.variant_ == null && $setup.enabled || $setup.variant_ == 'blue' && $setup.enabled,
+          'bg-green-500 border-green-500': $setup.variant_ == 'green' && $setup.enabled,
+          'bg-red-500 border-red-500': $setup.variant_ == 'red' && $setup.enabled,
+          'bg-yellow-500 border-yellow-500': $setup.variant_ == 'yellow' && $setup.enabled,
           'text-lg': $setup.size_ == 'lg',
-          'text-base': $setup.size_ == 'md',
+          'text-base': $setup.size_ == 'md' || $setup.size_ == null,
           'text-xs': $setup.size_ == 'sm',
           'w-16': $setup.size_ == 'lg',
-          'w-10': $setup.size_ == 'md',
+          'w-10': $setup.size_ == 'md' || $setup.size_ == null,
           'w-8': $setup.size_ == 'sm',
           'h-8 rounded-lg': $setup.size_ == 'lg',
-          'h-5 rounded-md': $setup.size_ == 'md',
+          'h-5 rounded-md': $setup.size_ == 'md' || $setup.size_ == null,
           'h-4 rounded-sm': $setup.size_ == 'sm'
         }, "relative inline-flex items-center transition-all border rounded-full  focus:outline-none focus:ring-4 focus:ring-blue-300"]
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
             "class": [{
-              'switch-dot-enabled': $setup.enabled,
-              'switch-dot-disabled': !$setup.enabled,
               'w-7 h-7': $setup.size_ == 'lg',
               'w-4 h-4': $setup.size_ == 'md',
               'w-3 h-3': $setup.size_ == 'sm',
-              'translate-x-[2px]': $setup.size_ == 'lg' && !$setup.enabled,
-              'translate-x-px': $setup.size_ == 'md' && !$setup.enabled || $setup.size_ == 'sm' && !$setup.enabled,
-              'translate-x-8': $setup.size_ == 'lg' && $setup.enabled,
+              'translate-x-px': $setup.size_ == 'lg' && !$setup.enabled || $setup.size_ == 'md' && !$setup.enabled || $setup.size_ == 'sm' && !$setup.enabled,
+              'translate-x-[33px]': $setup.size_ == 'lg' && $setup.enabled,
               'translate-x-[21px]': $setup.size_ == 'md' && $setup.enabled,
               'translate-x-[17px]': $setup.size_ == 'sm' && $setup.enabled
             }, "inline-block transition-all transform bg-white rounded-full "]
@@ -25257,7 +25261,7 @@ var _hoisted_1 = {
   "class": "p-24"
 };
 var _hoisted_2 = {
-  "class": "flex mb-4 space-x-5"
+  "class": "flex mb-5 space-x-5"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Foo ");
@@ -25267,12 +25271,13 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Baz ");
 
 var _hoisted_6 = {
-  "class": "flex mb-4 space-x-5"
+  "class": "flex mb-5 space-x-5"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ui_toggle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ui-toggle");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ui_toggle, {
+    yellow: "",
     sm: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -25282,6 +25287,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ui_toggle, {
+    green: "",
     md: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -25291,6 +25297,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ui_toggle, {
+    blue: "",
     lg: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -25300,6 +25307,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ui_toggle, {
+    variant: "red",
     size: "sm",
     label: "Foo"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ui_toggle, {

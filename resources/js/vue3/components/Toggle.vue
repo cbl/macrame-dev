@@ -1,12 +1,12 @@
 <template>
     <div class="p-24">
         <div class="flex mb-5 space-x-5">
-            <ui-toggle sm> Foo </ui-toggle>
-            <ui-toggle md> Bar </ui-toggle>
-            <ui-toggle lg> Baz </ui-toggle>
+            <ui-toggle yellow sm> Foo </ui-toggle>
+            <ui-toggle green md> Bar </ui-toggle>
+            <ui-toggle blue lg> Baz </ui-toggle>
         </div>
         <div class="flex mb-5 space-x-5">
-            <ui-toggle size="sm" label="Foo" />
+            <ui-toggle variant="red" size="sm" label="Foo" />
             <ui-toggle size="md" label="Bar" />
             <ui-toggle size="lg" label="Baz" />
         </div>
