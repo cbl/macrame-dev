@@ -35,6 +35,11 @@ class DevController extends Controller
     {
         return $page->component('checkbox');
     }
+    
+    public function checkboxGroup(Page $page)
+    {
+        return $page->component('checkbox-group');
+    }
 
     public function dropdown(Page $page)
     {
