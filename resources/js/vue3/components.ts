@@ -4,6 +4,9 @@ import Buttons from './components/Buttons.vue';
 import Dropdown from './components/Dropdown.vue';
 import Sidebar from './components/Sidebar.vue';
 import Toggle from './components/Toggle.vue';
+import RadioGroup from './components/RadioGroup.vue';
+import Checkbox from './components/Checkbox.vue';
+import CheckboxGroup from './components/CheckboxGroup.vue';
 
 export default {
     install(app) {
@@ -14,5 +17,8 @@ export default {
         app.component('Dropdown', Dropdown);
         app.component('Sidebar', Sidebar);
         app.component('Toggle', Toggle);
+        app.component('RadioGroup', RadioGroup);
+        app.component('Checkbox', Checkbox);
+        app.component('CheckboxGroup', CheckboxGroup);
     }
 }

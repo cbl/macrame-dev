@@ -25,6 +25,21 @@ class DevController extends Controller
     {
         return $page->component('toggle');
     }
+    
+    public function radioGroup(Page $page)
+    {
+        return $page->component('radio-group');
+    }
+    
+    public function checkbox(Page $page)
+    {
+        return $page->component('checkbox');
+    }
+    
+    public function checkboxGroup(Page $page)
+    {
+        return $page->component('checkbox-group');
+    }
 
     public function dropdown(Page $page)
     {
