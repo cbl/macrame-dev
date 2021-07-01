@@ -7,6 +7,7 @@ import Toggle from './components/Toggle.vue';
 import RadioGroup from './components/RadioGroup.vue';
 import Checkbox from './components/Checkbox.vue';
 import CheckboxGroup from './components/CheckboxGroup.vue';
+import Modals from './components/Modals.vue';
 
 export default {
     install(app) {
@@ -20,5 +21,6 @@ export default {
         app.component('RadioGroup', RadioGroup);
         app.component('Checkbox', Checkbox);
         app.component('CheckboxGroup', CheckboxGroup);
+        app.component('Modals', Modals);
     }
 }

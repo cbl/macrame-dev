@@ -24,6 +24,7 @@ Route::get('ui/toggle', [DevController::class, 'toggle']);
 Route::get('ui/radio-group', [DevController::class, 'radioGroup']);
 Route::get('ui/checkbox', [DevController::class, 'checkbox']);
 Route::get('ui/checkbox-group', [DevController::class, 'checkboxGroup']);
+Route::get('ui/modals', [DevController::class, 'modals']);
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/items', [PostController::class, 'items'])->name('posts.items');

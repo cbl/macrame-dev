@@ -21,6 +21,11 @@ class DevController extends Controller
         return $page->component('badges');
     }
 
+    public function modals(Page $page)
+    {
+        return $page->component('modals');
+    }
+
     public function toggle(Page $page)
     {
         return $page->component('toggle');
