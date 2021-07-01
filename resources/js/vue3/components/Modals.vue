@@ -1,14 +1,44 @@
 <template>
-    <div class="p-24">TODO: Modals here...</div>
+    <div class="p-24">
+        <ui-button primary @click="openModal()">Open Modal</ui-button>
+        <ui-modal v-model="isOpen">
+            <h3 class="mb-4 text-xl font-semibold">Modal title</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+                takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+                sed diam voluptua. At vero eos et accusam et justo duo dolores
+                et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+                est Lorem ipsum dolor sit amet.
+            </p>
+            <ui-button primary @click="closeModal">Close Modal</ui-button>
+        </ui-modal>
+        {{ isOpen }}
+    </div>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
     setup() {
-        const toggle = ref(false);
+        const isOpen = ref(false);
+
+        const openModal = () => {
+            isOpen.value = true;
+        };
+
+        const closeModal = () => {
+            isOpen.value = false;
+        };
+
         return {
-            toggle,
+            isOpen,
+            openModal,
+            closeModal,
         };
     },
 });
