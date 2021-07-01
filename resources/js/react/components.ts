@@ -3,6 +3,7 @@ import Card from './components/Card';
 import Checkbox from './components/Checkbox';
 import RadioGroup from './components/RadioGroup';
 import Toggle from './components/Toggle';
+import Modals from './components/Modals';
 
 export default {
     install(useComponent) {
@@ -13,5 +14,6 @@ export default {
         useComponent('radio-group', RadioGroup);
         useComponent('toggle', Toggle);
         useComponent('checkbox', Checkbox);
+        useComponent('modals', Modals);
     }
 }

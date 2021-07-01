@@ -23883,6 +23883,11 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
       "default": false
     }
   },
+  methods: {
+    closeModal: function closeModal() {
+      this.$emit('update:modelValue', false);
+    }
+  },
   setup: function setup(_ref, _ref2) {
     var emit = _ref2.emit;
 
@@ -23894,11 +23899,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
       return isOpen;
     });
     return {
-      opened: opened,
-      closeModal: function closeModal() {
-        console.log('close Modal');
-        emit('update:modelValue', false);
-      } // openModal() {
+      opened: opened // openModal() {
       //     isOpen.value = true;
       // },
 
@@ -24899,7 +24900,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dialog, {
         as: "div",
         onClose: _cache[1] || (_cache[1] = function ($event) {
-          return _ctx.$emit('update:modelValue', false);
+          return $options.closeModal();
         })
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -24914,7 +24915,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DialogOverlay, {
-                "class": "fixed inset-0 bg-gray-900 bg-opacity-50"
+                "class": "fixed inset-0 bg-gray-900 bg-opacity-70"
               })];
             }),
             _: 1
@@ -26765,7 +26766,9 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ", -1
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "mb-2"
+}, " Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ", -1
 /* HOISTED */
 );
 
@@ -26814,9 +26817,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.isOpen), 1
-  /* TEXT */
-  )]);
+  , ["modelValue"])]);
 }
 
 /***/ }),

@@ -7627,7 +7627,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.Toggle = exports.Checkbox = exports.RadioGroup = exports.Card = exports.Button = exports.pages = exports.plugin = void 0;
+exports.Modal = exports.Toggle = exports.Checkbox = exports.RadioGroup = exports.Card = exports.Button = exports.pages = exports.plugin = void 0;
 
 var Button_1 = __webpack_require__(/*! ./ui/Button */ "./packages/admin/packages/admin-react/src/ui/Button.tsx");
 
@@ -7667,6 +7667,10 @@ var Toggle_1 = __webpack_require__(/*! ./ui/Toggle */ "./packages/admin/packages
 
 exports.Toggle = Toggle_1["default"];
 
+var Modal_1 = __webpack_require__(/*! ./ui/Modal */ "./packages/admin/packages/admin-react/src/ui/Modal.tsx");
+
+exports.Modal = Modal_1["default"];
+
 var Textarea_1 = __webpack_require__(/*! ./ui/Textarea */ "./packages/admin/packages/admin-react/src/ui/Textarea.tsx");
 
 var BasePage_1 = __webpack_require__(/*! ./pages/BasePage */ "./packages/admin/packages/admin-react/src/pages/BasePage.tsx");
@@ -7685,6 +7689,7 @@ var plugin = {
     addComponent('ui-input', Input_1["default"]);
     addComponent('ui-radio-group', RadioGroup_1["default"]);
     addComponent('ui-select', Select_1["default"]);
+    addComponent('ui-modal', Modal_1["default"]);
     addComponent('ui-textarea', Textarea_1["default"]);
     addComponent('ui-toggle', Toggle_1["default"]);
   }
@@ -8230,6 +8235,145 @@ var Input = function Input(props) {
 };
 
 exports.default = Input;
+
+/***/ }),
+
+/***/ "./packages/admin/packages/admin-react/src/ui/Modal.tsx":
+/*!**************************************************************!*\
+  !*** ./packages/admin/packages/admin-react/src/ui/Modal.tsx ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _excluded = ["isOpen", "onChange"];
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var react_1 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.esm.js");
+
+var react_2 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var Modal = function Modal(_ref, context) {
+  var _ref$isOpen = _ref.isOpen,
+      isOpen = _ref$isOpen === void 0 ? false : _ref$isOpen,
+      _ref$onChange = _ref.onChange,
+      onChange = _ref$onChange === void 0 ? function (v) {
+    return null;
+  } : _ref$onChange,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  var _react_2$useState = react_2.useState(false),
+      _react_2$useState2 = _slicedToArray(_react_2$useState, 2),
+      opened = _react_2$useState2[0],
+      setOpened = _react_2$useState2[1];
+
+  opened = isOpen;
+
+  function closeModal() {
+    setOpened(false);
+  } // function openModal() {
+  //     setIsOpen(true)
+  // }
+
+
+  return jsx_runtime_1.jsx(jsx_runtime_1.Fragment, {
+    children: jsx_runtime_1.jsx(react_1.Transition, Object.assign({
+      appear: true,
+      show: isOpen,
+      as: react_2.Fragment
+    }, {
+      children: jsx_runtime_1.jsx(react_1.Dialog, Object.assign({
+        as: "div",
+        className: "fixed inset-0 z-10 overflow-y-auto",
+        onClose: closeModal
+      }, {
+        children: jsx_runtime_1.jsxs("div", Object.assign({
+          className: "min-h-screen px-4 text-center"
+        }, {
+          children: [jsx_runtime_1.jsx(react_1.Transition.Child, Object.assign({
+            as: react_2.Fragment,
+            enter: "ease-out duration-300",
+            enterFrom: "opacity-0",
+            enterTo: "opacity-100",
+            leave: "ease-in duration-200",
+            leaveFrom: "opacity-100",
+            leaveTo: "opacity-0"
+          }, {
+            children: jsx_runtime_1.jsx(react_1.Dialog.Overlay, {
+              className: "fixed inset-0"
+            }, void 0)
+          }), void 0), jsx_runtime_1.jsx("span", Object.assign({
+            className: "inline-block h-screen align-middle",
+            "aria-hidden": "true"
+          }, {
+            children: "\u200B"
+          }), void 0), jsx_runtime_1.jsx(react_1.Transition.Child, Object.assign({
+            as: react_2.Fragment,
+            enter: "ease-out duration-300",
+            enterFrom: "opacity-0 scale-95",
+            enterTo: "opacity-100 scale-100",
+            leave: "ease-in duration-200",
+            leaveFrom: "opacity-100 scale-100",
+            leaveTo: "opacity-0 scale-95"
+          }, {
+            children: jsx_runtime_1.jsxs("div", Object.assign({
+              className: "inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
+            }, {
+              children: [jsx_runtime_1.jsx(react_1.Dialog.Title, Object.assign({
+                as: "h3",
+                className: "text-lg font-medium leading-6 text-gray-900"
+              }, {
+                children: "Payment successful"
+              }), void 0), jsx_runtime_1.jsx("div", Object.assign({
+                className: "mt-2"
+              }, {
+                children: jsx_runtime_1.jsx("p", Object.assign({
+                  className: "text-sm text-gray-500"
+                }, {
+                  children: "Your payment has been successfully submitted. We\u2019ve sent your an email with all of the details of your order."
+                }), void 0)
+              }), void 0), jsx_runtime_1.jsx("div", Object.assign({
+                className: "mt-4"
+              }, {
+                children: jsx_runtime_1.jsx("button", Object.assign({
+                  type: "button",
+                  className: "inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500",
+                  onClick: closeModal
+                }, {
+                  children: "Got it, thanks!"
+                }), void 0)
+              }), void 0)]
+            }), void 0)
+          }), void 0)]
+        }), void 0)
+      }), void 0)
+    }), void 0)
+  }, void 0);
+};
+
+exports.default = Modal;
 
 /***/ }),
 
@@ -9536,6 +9680,8 @@ var RadioGroup_1 = __webpack_require__(/*! ./components/RadioGroup */ "./resourc
 
 var Toggle_1 = __webpack_require__(/*! ./components/Toggle */ "./resources/js/react/components/Toggle.tsx");
 
+var Modals_1 = __webpack_require__(/*! ./components/Modals */ "./resources/js/react/components/Modals.tsx");
+
 exports.default = {
   install: function install(useComponent) {
     // app.component('Badges', Badges);
@@ -9544,6 +9690,7 @@ exports.default = {
     useComponent('radio-group', RadioGroup_1["default"]);
     useComponent('toggle', Toggle_1["default"]);
     useComponent('checkbox', Checkbox_1["default"]);
+    useComponent('modals', Modals_1["default"]);
   }
 };
 
@@ -9954,6 +10101,86 @@ function default_1() {
         size: "lg",
         label: "Baz"
       }, void 0)]
+    }), void 0)]
+  }), void 0);
+}
+
+exports.default = default_1;
+
+/***/ }),
+
+/***/ "./resources/js/react/components/Modals.tsx":
+/*!**************************************************!*\
+  !*** ./resources/js/react/components/Modals.tsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var admin_react_1 = __webpack_require__(/*! @macramejs/admin-react */ "./packages/admin/packages/admin-react/src/index.tsx");
+
+function default_1() {
+  var _react_1$useState = react_1.useState(false),
+      _react_1$useState2 = _slicedToArray(_react_1$useState, 2),
+      isOpen = _react_1$useState2[0],
+      setIsOpen = _react_1$useState2[1];
+
+  var openModal = function openModal() {
+    console.log(isOpen);
+    setIsOpen(true);
+  };
+
+  var closeModal = function closeModal() {
+    setIsOpen(false);
+  };
+
+  return jsx_runtime_1.jsxs("div", Object.assign({
+    className: "p-24"
+  }, {
+    children: [isOpen, jsx_runtime_1.jsx("button", Object.assign({
+      onClick: openModal
+    }, {
+      children: "Open Modal"
+    }), void 0), jsx_runtime_1.jsxs(admin_react_1.Modal, Object.assign({
+      isOpen: isOpen,
+      onChange: function onChange(isOpen) {
+        return setIsOpen(isOpen);
+      }
+    }, {
+      children: [jsx_runtime_1.jsx("h3", Object.assign({
+        className: "mb-4 text-xl font-semibold"
+      }, {
+        children: "Modal title"
+      }), void 0), jsx_runtime_1.jsx("p", Object.assign({
+        className: "mb-2"
+      }, {
+        children: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+      }), void 0), jsx_runtime_1.jsx("button", Object.assign({
+        onClick: closeModal
+      }, {
+        children: "Close Modal"
+      }), void 0)]
     }), void 0)]
   }), void 0);
 }
