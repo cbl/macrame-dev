@@ -14,7 +14,7 @@
                     <ui-dropdown-item>Foo</ui-dropdown-item>
                     <ui-dropdown-item>Bar</ui-dropdown-item>
                 </ui-dropdown-group>
-                <ui-dropdown-devider />
+                <ui-dropdown-divider />
                 <ui-dropdown-group>
                     <template v-slot:title> Group B </template>
                     <ui-dropdown-item>Baz</ui-dropdown-item>
@@ -27,15 +27,8 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
 
 export default defineComponent({
-    components: {
-        Menu,
-        MenuButton,
-        MenuItems,
-        MenuItem,
-    },
     setup() {
         //
     },
