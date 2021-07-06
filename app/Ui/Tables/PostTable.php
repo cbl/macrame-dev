@@ -30,8 +30,8 @@ class PostTable extends Table
      */
     public function filters($filters)
     {
-        $filters->add('lorem', [$this, 'loremFilter'])
-            ->tag('From :starts_at to :ends_at');
+        $filters->add('lorem', [$this, 'loremFilter']);
+        // ->tag('From :starts_at to :ends_at');
     }
 
     public function loremFilter($builder, $attributes)
